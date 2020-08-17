@@ -2,7 +2,7 @@
 
 namespace BrandStudio\Currency\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
+use BrandStudio\Currency\Http\Requests\CurrencyRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -94,7 +94,7 @@ class CurrencyCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PostRequest::class);
+        CRUD::setValidation(CurrencyRequest::class);
 
         CRUD::addFields([
             [
