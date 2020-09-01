@@ -3,13 +3,13 @@ namespace BrandStudio\Currency;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use BrandStudio\Publishable\Interfaces\Publishable as PublishableInterface;
+use BrandStudio\Publishable\Traits\Publishable as PublishableTrait;
 
-class Currency extends Model
+class Currency extends Model implements PublishableInterface
 {
     use CrudTrait;
-
-    const DRAFT     = 0;
-    const PUBLISHED = 1;
+    use PublishableTrait;
 
     protected $table = 'currencies';
     protected $guarded = ['id'];
@@ -34,25 +34,6 @@ class Currency extends Model
         });
     }
 
-    // Scopes
-    public function scopeDraft($query)
-    {
-        $query->where('status', static::DRAFT);
-    }
-
-    public function scopePublished($query)
-    {
-        $query->where('status', static::PUBLISHED);
-    }
-
-    // Accessors
-    public static function getStatusOptions() : array
-    {
-        return [
-            static::DRAFT => trans('brandstudio::currency.draft'),
-            static::PUBLISHED => trans('brandstudio::currency.published'),
-        ];
-    }
 
     public function getAngleAttribute() : string
     {
