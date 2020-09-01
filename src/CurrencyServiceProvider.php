@@ -28,7 +28,7 @@ class CurrencyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'brandstudio');
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'brandstudio');
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'currency');
 
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/database/migrations');
@@ -51,7 +51,7 @@ class CurrencyServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/resources/lang'      => resource_path('lang/vendor/brandstudio')
+            __DIR__.'/resources/lang'      => resource_path('lang/vendor/currency')
         ], 'lang');
     }
 
