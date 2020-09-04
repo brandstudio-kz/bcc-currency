@@ -19,7 +19,7 @@ class CurrencyCrudController extends CrudController
     {
         CRUD::setModel(config('currency.currency_class'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/currency');
-        CRUD::setEntityNameStrings(trans_choice('currency::currency.currencies', 1), trans_choice('currency::currency.currencies', 2));
+        CRUD::setEntityNameStrings(trans_choice('currency::admin.currencies', 1), trans_choice('currency::admin.currencies', 2));
         CRUD::orderBy('status', 'desc')->orderBy('lft');
 
         if (!config('currency.enable_create')) {
@@ -44,15 +44,15 @@ class CurrencyCrudController extends CrudController
             ],
             [
                 'name' => 'name',
-                'label' => trans('currency::currency.name'),
+                'label' => trans('currency::admin.name'),
             ],
             [
                 'name' => 'title',
-                'label' => trans('currency::currency.title'),
+                'label' => trans('currency::admin.title'),
             ],
             [
                 'name' => 'value',
-                'label' => trans('currency::currency.value'),
+                'label' => trans('currency::admin.value'),
                 'type' => 'number',
                 'decimals' => 2,
                 'thousands_sep' => ' ',
@@ -60,7 +60,7 @@ class CurrencyCrudController extends CrudController
             ],
             [
                 'name' => 'change',
-                'label' => trans('currency::currency.description'),
+                'label' => trans('currency::admin.description'),
                 'limit' => 99999,
                 'type' => 'text',
                 'wrapper' => [
@@ -72,22 +72,22 @@ class CurrencyCrudController extends CrudController
             ],
             [
                 'name' => 'status',
-                'label' => trans('currency::currency.status'),
+                'label' => trans('currency::admin.status'),
                 'type' => 'check',
             ],
             [
                 'name' => 'pub_date',
-                'label' => trans('currency::currency.pub_date'),
+                'label' => trans('currency::admin.pub_date'),
                 'type' => 'date',
             ],
             [
                 'name' => 'updated_at',
-                'label' => trans('currency::currency.updated_at'),
+                'label' => trans('currency::admin.updated_at'),
                 'type' => 'datetime',
             ],
             [
                 'name' => 'created_at',
-                'label' => trans('currency::currency.created_at'),
+                'label' => trans('currency::admin.created_at'),
             ],
         ]);
     }
@@ -99,7 +99,7 @@ class CurrencyCrudController extends CrudController
         CRUD::addFields([
             [
                 'name' => 'name',
-                'label' => trans('currency::currency.name'),
+                'label' => trans('currency::admin.name'),
                 'attributes' => [
                     'required' => true,
                 ],
@@ -109,7 +109,7 @@ class CurrencyCrudController extends CrudController
             ],
             [
                 'name' => 'status',
-                'label' => trans('currency::currency.status'),
+                'label' => trans('currency::admin.status'),
                 'type' => 'select2_from_array',
                 'options' => config('currency.currency_class')::getStatusOptions(),
                 'wrapperAttributes' => [
@@ -118,7 +118,7 @@ class CurrencyCrudController extends CrudController
             ],
             [
                 'name' => 'value',
-                'label' => trans('currency::currency.value'),
+                'label' => trans('currency::admin.value'),
                 'type' => 'number',
                 'suffix' => ' ₸',
                 'attributes' => [
